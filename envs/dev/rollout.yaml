@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: color-app
+  namespace: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: color-app
+  template:
+    metadata:
+      labels:
+        app: color-app
+    spec:
+      containers:
+      - name: color-app
+        image: asia-south1-docker.pkg.dev/polygon-infra/devops-demo-repo/color-app:v1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: COLOR
+          value: "blue"
+        - name: VERSION
+          value: "v1"
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {duration: 30s}
+      - setWeight: 50
+      - pause: {duration: 30s}
+      - setWeight: 100

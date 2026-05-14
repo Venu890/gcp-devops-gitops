@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: color-app
-        image: asia-south1-docker.pkg.dev/polygon-infra/devops-demo-repo/color-app:v1
+                image: asia-south1-docker.pkg.dev/polygon-infra/devops-demo-repo/color-app:a2cb4e4
         ports:
         - containerPort: 8080
         env:

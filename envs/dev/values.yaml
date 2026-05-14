@@ -1,5 +1,5 @@
 image:
   repository: asia-south1-docker.pkg.dev/polygon-infra/devops-demo-repo/color-app
-  tag: "a2cb4e4"
+  tag: "0df0b7e"
 color: "blue"
 replicas: 3
